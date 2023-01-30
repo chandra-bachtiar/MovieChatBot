@@ -2,7 +2,7 @@
 import Chat from './components/chat';
 import Footer from './components/footer';
 import Header from './components/header';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 const chat = [
@@ -10,7 +10,7 @@ const chat = [
         type: "chat",
         message: `Selamat datang di MovieChatBot by Chand. Silahkan kirimkan judul film yang ada ingin cari saya akan mencoba mencari detail informasi dari film tersebut.`,
         fromMe: true,
-    },{
+    }, {
         type: "user",
         message: `hallo juga`,
         fromMe: false,
@@ -23,16 +23,48 @@ const Home = () => {
     const [chatData, setChatData] = useState(chat);
     const [inputData, setInputData] = useState('testing chandra');
     const [isLoading, setIsLoading] = useState(false);
+    const [isChange, setIsChange] = useState(0);
+    const bottomRef = useRef(null);
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        const div = bottomRef.current;
+        div.scrollTop = div.scrollHeight;
+    }, [isChange]);
 
 
     const handleClick = async () => {
-        setIsLoading(true);
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${inputData}`);
-        const data = await response.json();
+        if (inputData) {
+            setIsLoading(true);
+            setIsChange(isChange + 1);
+            // const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${inputData}`);
+            // const data = await response.json();
 
-        setChatData([...chatData, data]);
-        setInputData('');
-        setIsLoading(false);
+            let inputChatData = chatData;
+
+            const dataFromUser = {
+                type: "user",
+                message: inputData,
+                fromMe: false,
+            };
+
+            inputChatData.push(dataFromUser);
+
+            const data = {
+                type: "API",
+                message: `this message from api`,
+                fromMe: true,
+            };
+
+            inputChatData.push(data);
+
+            setChatData(inputChatData);
+            setInputData('');
+            setIsLoading(false);
+        } else {
+            inputRef.current.focus();
+        }
+
     };
 
     const handleReset = () => {
@@ -52,10 +84,14 @@ const Home = () => {
                         handleReset={handleReset}
                         isLoading={isLoading}
                     />
-                    <Chat chatData={chatData} />
+                    <Chat
+                        chatData={chatData}
+                        bottomRef={bottomRef}
+                    />
                     <Footer
                         handleInputChange={handleInputChange}
                         inputData={inputData}
+                        inputRef={inputRef}
                         handleClick={handleClick}
                     />
                 </div>

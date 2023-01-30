@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import profile from '../../public/profile.jpg';
 
-const Header = () => {
+const Header = ({ handleReset, isLoading }) => {
     return (
         <div className='w-full h-[10%] flex-none bg-[#f5f5f5] rounded-t-xl p-2'>
             <div className="flex h-full w-full">
@@ -19,12 +19,12 @@ const Header = () => {
                             <p className='font-bold'>MovieChatBot!</p>
                         </div>
                         <div className="flex-none grow">
-                            <p className='text-sm'>Online</p>
+                            <p className='text-sm'>{isLoading ? "Typing..." : "Online"}</p>
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-center items-center w-[20%] md:w-[15%]">
-                    <button className="btn btn-warning btn-sm">Clear</button>
+                    <button className="btn btn-warning btn-sm" onClick={handleReset}>Clear</button>
                 </div>
             </div>
         </div>
