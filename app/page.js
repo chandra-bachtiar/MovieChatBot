@@ -38,12 +38,11 @@ const Home = () => {
     }
 
 
-    const handleClick = async (event) => {
+    const handleClick = async () => {
         if (inputData) {
             setIsLoading(true);
             setIsChange(isChange + 1);
-            // const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${inputData}`);
-            // const data = await response.json();
+            
 
             let inputChatData = chatData;
 
@@ -55,13 +54,18 @@ const Home = () => {
 
             inputChatData.push(dataFromUser);
 
-            const data = {
-                type: "API",
-                message: `this message from api`,
-                fromMe: true,
-            };
+            const response = await fetch(`/api/movie`,{
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({cari: inputData}),
+            });
+            const dataResult = await response.json();
+            console.log(dataResult);
 
-            inputChatData.push(data);
+            inputChatData.push(dataResult);
 
             setChatData(inputChatData);
             setInputData('');
