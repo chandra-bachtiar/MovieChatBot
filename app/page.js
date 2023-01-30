@@ -1,4 +1,5 @@
 import Chat from './components/chat';
+import Footer from './components/footer';
 import Header from './components/header';
 
 const Home = () => (
@@ -7,7 +8,7 @@ const Home = () => (
             <div className='flex flex-col gap-2 h-full w-full'>
                 <Header />
                 <div className='w-full grow'>test2</div>
-                <div className='w-full h-[15%] flex-none'>test3</div>
+                <Footer />
             </div>
             {
                 //<Header /> }

@@ -23,7 +23,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-center items-center w-[15%]">
+                <div className="flex justify-center items-center w-[20%] md:w-[15%]">
                     <button class="btn btn-warning btn-sm">Clear</button>
                 </div>
             </div>
