@@ -7,8 +7,8 @@ const Header = () => {
         <div className='w-full h-[10%] flex-none bg-[#f5f5f5] rounded-t-xl p-2'>
             <div className="flex h-full w-full">
                 <div className="flex-none w-[15%] pl-3">
-                    <div class="avatar online">
-                        <div class="w-10 rounded-full">
+                    <div className="avatar online">
+                        <div className="w-10 rounded-full">
                             <Image src={profile} alt="Profile Picture" />
                         </div>
                     </div>
@@ -24,7 +24,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="flex justify-center items-center w-[20%] md:w-[15%]">
-                    <button class="btn btn-warning btn-sm">Clear</button>
+                    <button className="btn btn-warning btn-sm">Clear</button>
                 </div>
             </div>
         </div>

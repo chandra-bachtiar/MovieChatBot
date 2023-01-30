@@ -1,28 +1,28 @@
-"use client";
-import React, { useState } from 'react';
+import React from 'react';
 
-const Chat = () => {
-    const [messages, setMessages] = useState([]);
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        setMessages([...messages, event.target.message.value]);
-        event.target.message.value = '';
-    };
-
+const Chat = ({ chatData }) => {
+    console.log(chatData);
     return (
-        <div>
-            <ul>
-                {messages.map((message, index) => (
-                    <li key={index}>{message}</li>
-                ))}
-            </ul>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="message" />
-                <button type="submit">Send</button>
-            </form>
+        <div className='px-3 overflow-auto no-scrollbar grow'>
+            {
+                chatData.map((el, idx) => {
+                    if (el.type === "chat") {
+                        return (
+                            <div key={idx} className="chat chat-start">
+                                <div className="chat-bubble chat-bubble-accent">{el.message}</div>
+                            </div>
+                        )
+                    } else if (el.type === "user") {
+                        return (
+                            <div key={idx} className="chat chat-end">
+                                <div className="chat-bubble chat-bubble-info">{el.message}</div>
+                            </div>
+                        )
+                    }
+                })
+            }
         </div>
     );
-};
+}
 
 export default Chat;
