@@ -40,9 +40,7 @@ const Home = () => {
 
     const handleClick = async () => {
         if (inputData) {
-            setIsLoading(true);
-            setIsChange(isChange + 1);
-            
+            setIsLoading(true);            
 
             let inputChatData = chatData;
 
@@ -67,6 +65,7 @@ const Home = () => {
 
             inputChatData.push(dataResult);
 
+            setIsChange(isChange + 1);
             setChatData(inputChatData);
             setInputData('');
             setIsLoading(false);
