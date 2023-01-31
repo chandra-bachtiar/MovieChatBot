@@ -6,9 +6,9 @@ const Header = ({ handleReset, isLoading }) => {
     return (
         <div className='w-full h-[10%] flex-none bg-[#f5f5f5] rounded-t-xl p-2'>
             <div className="flex h-full w-full">
-                <div className="flex-none w-[15%] pl-3">
+                <div className="flex-none w-[20%] md:w-[15%] pl-3">
                     <div className="avatar online">
-                        <div className="w-10 rounded-full">
+                        <div className="w-10 rounded-full flex justify-center items-center">
                             <Image src={profile} alt="Profile Picture" />
                         </div>
                     </div>

@@ -10,10 +10,6 @@ export default function RootLayout({ children }) {
       <head />
       <body>
         {children}
-        <div className="ocean">
-          <div className="wave"></div>
-          <div className="wave"></div>
-        </div>
       </body>
     </html>
   )

@@ -105,7 +105,7 @@ const Home = () => {
     return (
         <div className="relative flex justify-center items-center min-h-screen z-10">
             <div className="flex flex-col">
-                <div className="rounded-xl shadow-lg bg-[#E8E9EA] w-[95vw] h-[85vh] md:w-[45vw]">
+                <div className="rounded-xl shadow-lg drop-shadow-2xl bg-[#E8E9EA] w-[95vw] h-[85vh] md:w-[45vw]">
                     <div className='flex flex-col gap-2 h-full w-full'>
                         <Header
                             handleReset={handleReset}
@@ -124,7 +124,7 @@ const Home = () => {
                         />
                     </div>
                 </div>
-                <div className='text-center text-white'>
+                <div className='text-center text-black'>
                     <p>Made With ❤️ Chandra Bachtiar</p>
                 </div>
             </div>
